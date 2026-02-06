@@ -96,11 +96,10 @@ Partial matches don’t count unless the pattern allows it.
 
 ---
 
-# **Regular Expression Modifiers (Flags) — Cheat Sheet**
+# **Regular Expression Modifiers (or Flags)**
 
 ## **What Are Modifiers?**
-Modifiers (flags) change **how** a regex searches.  
-They appear **after** the closing slash:
+Modifiers (or flags) change **how** a regex searches.  Appear **after** the closing slash:
 
 ```js
 /freeCodeCamp/i
