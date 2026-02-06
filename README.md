@@ -1,13 +1,11 @@
 # JAVASCRIPT-REGEX-Regular-Expressions
 
-# **Regular Expressions (Regex) — Cheat Sheet**
-
 ## **1. What Are Regular Expressions?**
 - A **pattern‑matching syntax** used to search, test, extract, and replace text.
 - In JavaScript, regex is written between **slashes**:
 
 ```js
-const regex = /freeCodeCamp/;
+const regex = /outDoorCamp/;
 ```
 
 ---
@@ -31,8 +29,8 @@ const regex = /freeCodeCamp/;
 - Returns **null** if no match.
 
 ```js
-"freeCodeCamp".match(/freeCodeCamp/);
-// ['freeCodeCamp', index: 0, input: 'freeCodeCamp', groups: undefined]
+"outDoorCamp".match(/outDoorCamp/);
+// ['outDoorCamp', index: 0, input: 'outDoorCamp', groups: undefined]
 ```
 
 **Match array includes:**
@@ -88,6 +86,7 @@ Partial matches don’t count unless the pattern allows it.
 | `/abc/i` | case‑insensitive |
 | `/abc/g` | global (find all matches) |
 | `.` | any character |
+| `m` | multi line |
 | `\d` | digit |
 | `\w` | word character |
 | `+` | one or more |
@@ -96,22 +95,24 @@ Partial matches don’t count unless the pattern allows it.
 
 ---
 
-# **Regular Expression Modifiers (or Flags)**
+# **Regular Expression Modifiers (Flags) **
 
 ## **What Are Modifiers?**
-Modifiers (or flags) change **how** a regex searches.  Appear **after** the closing slash:
+Modifiers (flags) change **how** a regex searches.  
+They appear **after** the closing slash:
 
 ```js
-/freeCodeCamp/i
+/outDoorCamp/i
 ```
+
 ---
 
 # **1. `i` — Case‑Insensitive**
 Makes the pattern ignore case.
 
 ```js
-/freeCodeCamp/i.test("FREECODECAMP"); // true
-/freeCodeCamp/i.test("freecodecamp"); // true
+/outDoorCamp/i.test("OUTDOORCAMP"); // true
+/outDoorCamp/i.test("outdoorcamp"); // true
 ```
 
 ✔ Useful when matching text regardless of capitalization.
@@ -122,7 +123,8 @@ Makes the pattern ignore case.
 Finds **all** matches instead of stopping at the first.
 
 ```js
-"free free".match(/free/g); // ['free', 'free']
+"outDoorCamp outDoorCamp".match(/outDoorCamp/gi);
+// ['outDoorCamp', 'outDoorCamp']
 ```
 
 ⚠ **Important:**  
@@ -132,9 +134,9 @@ Finds **all** matches instead of stopping at the first.
 - This can cause unexpected **true/false** results when testing multiple strings
 
 ```js
-const r = /free/gi;
-r.test("free"); // true
-r.test("free again"); // false (starts searching from lastIndex)
+const r = /outDoorCamp/gi;
+r.test("outDoorCamp"); // true
+r.test("outDoorCamp is great"); // false (starts searching from lastIndex)
 ```
 
 ✔ Use `g` when matching **multiple occurrences in one string**  
@@ -146,8 +148,8 @@ r.test("free again"); // false (starts searching from lastIndex)
 Makes `^` and `$` match the **start/end of each line**, not the whole string.
 
 ```js
-/^free/m.test("hello\nfree\nworld"); // true
-/free$/m.test("hello\nfree");        // true
+/^outDoorCamp/m.test("hello\noutDoorCamp\nworld"); // true
+/outDoorCamp$/m.test("hello\noutDoorCamp");        // true
 ```
 
 ✔ Useful for multi‑line text blocks.
@@ -155,6 +157,7 @@ Makes `^` and `$` match the **start/end of each line**, not the whole string.
 ---
 
 # **4. Anchors (Used With Flags)**
+
 | Anchor | Meaning |
 |--------|---------|
 | `^` | Match start of string/line |
@@ -163,8 +166,8 @@ Makes `^` and `$` match the **start/end of each line**, not the whole string.
 Examples:
 
 ```js
-/^free/i.test("freecodecamp"); // true
-/free$/i.test("I love free");  // true
+/^outDoorCamp/i.test("outDoorCamp rules"); // true
+/outDoorCamp$/i.test("I love outDoorCamp"); // true
 ```
 
 ---
@@ -173,7 +176,7 @@ Examples:
 Adds an `indices` array showing the **start and end positions** of matches.
 
 ```js
-"we love freecodecamp".match(/freecodecamp/di);
+"we love outDoorCamp".match(/outDoorCamp/di);
 // indices: [ [8, 20] ]
 ```
 
@@ -194,9 +197,9 @@ Enables full Unicode support (emoji, special characters).
 Like `g`, but **must match exactly at `lastIndex`**.
 
 ```js
-const r = /free/y;
+const r = /outDoorCamp/y;
 r.lastIndex = 5;
-r.test("xxx free xxx"); // true only if match starts at index 5
+r.test("xxxxxoutDoorCamp"); // true only if match starts at index 5
 ```
 
 ✔ Precise control over match position.
@@ -207,7 +210,7 @@ r.test("xxx free xxx"); // true only if match starts at index 5
 Makes `.` match **newlines**.
 
 ```js
-/hello.world/s.test("hello\nworld"); // true
+/outDoorCamp.world/s.test("outDoorCamp\nworld"); // true
 ```
 
 ✔ Useful when scanning multi‑line text as one block.
