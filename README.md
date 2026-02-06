@@ -527,7 +527,7 @@ Lookaheads and lookbehinds **peek** at surrounding text but **don’t consume it
   - $ end of string
 - Zero or more letters + 4–6 digits:  
   - `/^[A-Za-z]*\d{4,6}$/`
-  - “A string that has any number of letters (including none), followed by 4 to 6 digits, and nothing else.”
+  - “A string that has any number of letters (or no letters), followed by 4 to 6 digits, and nothing else.”
 - One or more letters + 4–6 digits:  
   - `/^[A-Za-z]+\d{4,6}$/`
   - “A string that begins with at least one letter,
