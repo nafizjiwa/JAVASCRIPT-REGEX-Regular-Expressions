@@ -549,5 +549,115 @@ Quantifiers make regex **shorter, clearer, and more flexible**, letting you cont
 
 ---
 
+# **Capturing Groups & Backreferences **
+
+A **capturing group** is created by putting part of a regex inside parentheses:
+
+```js
+(code)
+```
+Which states:
+
+**“Grab this part of the match and store it so I can use it later.”**
+---
+
+# **Why this matters in your example**
+
+You wrote:
+
+> *“Let's capture the Door from our outDoorCamp regular expression.”*
+
+```js
+/out(Door)camp/
+```
+- Match the word **out**
+- Capture the exact text **Door**
+- Then match **camp**
+
+When you run:
+
+```js
+"outDoorcamp".match(/out(Door)camp/)
+```
+- Index 0 → `"freecodecamp"` (the whole match)
+- Index 1 → `"code"` (the captured group)
+ 
+**Capturing groups let you extract or reuse specific parts of what you matched.**
+
+---
+
+### **Capturing Groups**
+- Parentheses `( )` captures part of a matched string.
+- Example: `/out(door)camp/` would capture `"door"`.
+- `match()` shows captured groups as extra array elements.
+- Capturing groups store **patterns**, not character classes.
+
+---
+
+### **Using Captured Groups in `replace()`**
+- You can reuse captured text in a replacement string.
+- $ is used in replace() for backreference with # of the captured group
+- `$1`, `$2`, etc. refer to the 1st, 2nd, etc. capture group.
+- Example:  
+  `"outdoooorcamp".replace(/our(do+or)camp)/, "paid$1world")`  
+  → preserves the exact number of repeated letters.
+- Find ‘out…camp’, 1st capture group the ‘do+or’ part (with all its o’s), and replace the whole thing with ‘paid + the captured part + world’.”
+- out + doooor + camp
+- so outdoooorcamp ---> paiddoooorworld
+
+---
+
+### **Backreferences Inside Regex**
+- You can require the same captured text to appear again.
+- Use `\1`, `\2`, etc. to reference earlier groups.
+- Example:  
+  `/out(do+or)camp.*out\1camp/`  
+  → second “door” must have the **same number of a’o** as the first.
+
+---
+
+### **Named Capture Groups**
+- Syntax: `(?<name>pattern)`
+- Named backreference in regex: `\k<name>`
+- Named backreference in replace: `$<name>`
+- Makes complex patterns easier to read.
+
+---
+
+### **Non‑Capturing Groups**
+- Syntax: `(?:pattern)`
+- Groups patterns **without capturing** them.
+- Useful for OR patterns like:  
+  `/out(?:door|trail)camp/`
+---
+Ah, I see what happened — that final explanatory sentence didn’t get carried over into the condensed version. Here it is, clearly explained and included:
+
+---
+
+# **Explanation of the Missing Line**
+
+### **Original idea:**
+> *“A non‑capturing group does not store the code|candy match separately in memory. But it can be helpful for creating alternate patterns without sacrificing readability or performance.”*
+
+### **Plain‑English meaning:**
+
+- A **non‑capturing group** `(?: ... )` groups patterns **without saving** what it matched.
+- It’s useful when you want to use parentheses **only for structure**, not for capturing.
+- This keeps your regex **cleaner**, **faster**, and avoids creating unnecessary `$1`, `$2`, etc.
+
+### **Example:**
+
+```js
+/free(?:code|candy)camp/
+```
+
+This matches:
+
+- `freecodecamp`
+- `freecandycamp`
+
+…but **does not** store `"code"` or `"candy"` as a captured group.
+
+---
 
 
