@@ -231,3 +231,105 @@ Makes `.` match **newlines**.
 | **d** | Indices | Adds match index ranges |
 
 ---
+
+# **Match & Replace All Occurrences **
+
+## **1. Default Behavior (No `g` Flag)**
+Without the global flag:
+
+- `match()` → returns **only the first match**
+- `replace()` → replaces **only the first occurrence**
+
+```js
+const regex = /freecodecamp/;
+str.match(regex);     // first match only
+str.replace(regex, "freeCodeCamp"); // replaces first only
+```
+
+---
+
+# **2. Using the `g` (Global) Flag**
+Add `g` to match **all occurrences**.
+
+```js
+const regex = /freecodecamp/g;
+str.match(regex);     // ['freecodecamp', 'freecodecamp']
+str.replace(regex, "freeCodeCamp");
+// "freeCodeCamp is the best we love freeCodeCamp"
+```
+
+✔ `g` makes `match()` return **all matches**  
+✔ `g` makes `replace()` replace **every occurrence**
+
+⚠ With `.test()`, `g` makes the regex **stateful** (moves `lastIndex`).
+
+---
+
+# **3. matchAll() — Modern, Powerful Matching**
+`matchAll()` returns an **iterator** with full match details (index, input, groups).
+
+Requires the **global flag**:
+
+```js
+const regex = /freecodecamp/g;
+const matches = str.matchAll(regex);
+```
+
+### Convert iterator → array:
+```js
+Array.from(matches);
+```
+
+Result includes:
+- matched text  
+- index  
+- input  
+- groups  
+
+---
+
+# **4. replaceAll() — Replace Everything Easily**
+`replaceAll()` replaces **every** occurrence without needing regex.
+
+```js
+str.replaceAll("freecodecamp", "freeCodeCamp");
+```
+
+Works with regex too (must include `g`):
+
+```js
+str.replaceAll(/freecodecamp/g, "freeCodeCamp");
+```
+
+---
+
+# **5. matchAll() Iterator Behavior**
+`matchAll()` is **lazy**:
+
+- It finds the next match **only when you call `.next()`**
+- Stops when `.next()` returns `{ done: true }`
+
+Example:
+
+```js
+const it = str.matchAll(/freecodecamp/g);
+it.next(); // first match
+it.next(); // second match
+it.next(); // done: true
+```
+
+---
+
+# **6. Summary Table**
+
+| Method | Needs `g`? | Returns | Finds All? | Notes |
+|--------|------------|---------|------------|-------|
+| `match()` | No | array or null | ❌ | Only first match |
+| `match()` + `g` | Yes | array of matches | ✔ | Loses index info |
+| `matchAll()` | Yes | iterator | ✔ | Full match details |
+| `replace()` | No | new string | ❌ | Replaces first only |
+| `replace()` + `g` | Yes | new string | ✔ | Replaces all |
+| `replaceAll()` | Yes (if regex) | new string | ✔ | Easiest full replace |
+
+---
+
