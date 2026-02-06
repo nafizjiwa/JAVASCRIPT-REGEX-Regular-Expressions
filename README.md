@@ -219,12 +219,13 @@ Makes `.` match **newlines**.
 
 # **Summary Table**
 
-| Flag | Name | Effect |
+| Flags | Name | Effect |
 |------|------|--------|
 | **i** | Ignore Case | Case‑insensitive matching |
 | **g** | Global | Find all matches; stateful `.test()` |
 | **m** | Multiline | `^` and `$` match per line |
-| **s** | Single‑line | `.` matches newlines |
+| **.** | Wildcard | match any one character except a newline|
+| **s** | Single‑line | `s` helps `.` match newlines |
 | **y** | Sticky | Match only at `lastIndex` |
 | **u** | Unicode | Enables full Unicode support |
 | **v** | Extended Unicode | More advanced Unicode classes |
@@ -232,18 +233,17 @@ Makes `.` match **newlines**.
 
 ---
 
-# **Match & Replace All Occurrences **
+# **Match & Replace All Occurrences**
 
-## **1. Default Behavior (No `g` Flag)**
-Without the global flag:
+## **1. Default Behavior (Without global `g` Flag)**
 
 - `match()` → returns **only the first match**
 - `replace()` → replaces **only the first occurrence**
 
 ```js
-const regex = /freecodecamp/;
+const regex = /outDoorCamp/;
 str.match(regex);     // first match only
-str.replace(regex, "freeCodeCamp"); // replaces first only
+str.replace(regex, "outDoorCamp"); // replaces first only
 ```
 
 ---
@@ -252,26 +252,26 @@ str.replace(regex, "freeCodeCamp"); // replaces first only
 Add `g` to match **all occurrences**.
 
 ```js
-const regex = /freecodecamp/g;
-str.match(regex);     // ['freecodecamp', 'freecodecamp']
-str.replace(regex, "freeCodeCamp");
-// "freeCodeCamp is the best we love freeCodeCamp"
+const regex = /outDoorCamp/g;
+str.match(regex);     // ['outDoorCamp', 'outDoorCamp']
+str.replace(regex, "outDoorCamp");
+// "outDoorCamp is the best we love outDoorCamp"
 ```
 
-✔ `g` makes `match()` return **all matches**  
-✔ `g` makes `replace()` replace **every occurrence**
+✔ `g` + `match()` returns **an ARRAY of all matches**  
+✔ `g` + `replace()` replaces **every occurrence**
 
-⚠ With `.test()`, `g` makes the regex **stateful** (moves `lastIndex`).
+⚠ With `.test()`, `g` makes the regex **stateful** (`lastIndex` moves).
 
 ---
 
 # **3. matchAll() — Modern, Powerful Matching**
-`matchAll()` returns an **iterator** with full match details (index, input, groups).
+`matchAll()` returns an **iterator NOT ARRAY** with details of index, input, groups.
 
 Requires the **global flag**:
 
 ```js
-const regex = /freecodecamp/g;
+const regex = /outDoorCamp/g;
 const matches = str.matchAll(regex);
 ```
 
@@ -292,13 +292,13 @@ Result includes:
 `replaceAll()` replaces **every** occurrence without needing regex.
 
 ```js
-str.replaceAll("freecodecamp", "freeCodeCamp");
+str.replaceAll("outDoorCamp", "outDoorCamp");
 ```
 
 Works with regex too (must include `g`):
 
 ```js
-str.replaceAll(/freecodecamp/g, "freeCodeCamp");
+str.replaceAll(/outDoorCamp/g, "outDoorCamp");
 ```
 
 ---
@@ -306,18 +306,32 @@ str.replaceAll(/freecodecamp/g, "freeCodeCamp");
 # **5. matchAll() Iterator Behavior**
 `matchAll()` is **lazy**:
 
-- It finds the next match **only when you call `.next()`**
-- Stops when `.next()` returns `{ done: true }`
+- Finds the next match **only when `.next()` is called**
+- Stops *ONLY* when `.next()` returns `{ done: true }`
 
 Example:
 
 ```js
-const it = str.matchAll(/freecodecamp/g);
+const it = str.matchAll(/outDoorCamp/g);
 it.next(); // first match
 it.next(); // second match
 it.next(); // done: true
 ```
+Here’s a **tight, classroom‑ready condensed version**, NAFIZ:
 
+---
+
+# **Explanation**
+
+As long as `matchAll()` keeps finding matches, the iterator continues. When it finally fails to find another match, it returns `{ done: true, value: undefined }`.
+
+To avoid manually calling `.next()` repeatedly, convert the iterator into an array at once using:
+
+```js
+Array.from(iterator)
+```
+
+This gives you all matches immediately, without the lazy step‑by‑step iteration.
 ---
 
 # **6. Summary Table**
@@ -330,6 +344,89 @@ it.next(); // done: true
 | `replace()` | No | new string | ❌ | Replaces first only |
 | `replace()` + `g` | Yes | new string | ✔ | Replaces all |
 | `replaceAll()` | Yes (if regex) | new string | ✔ | Easiest full replace |
+
+---
+
+Here you go, NAFIZ — a **clean, tight, classroom‑ready condensed version** of the entire passage on **Character Classes**. This keeps all the essential meaning while stripping out all the fluff.
+
+---
+
+# **Character Classes**
+
+## **What Are Character Classes?**
+Character classes let you match **sets** of characters instead of writing each one manually.
+
+---
+
+## **1. Wildcard (`.`)**
+- Matches **any single character** except line breaks  
+- Use the **`s` flag** to include line breaks
+
+```js
+/a./   // matches "a" + any character
+```
+
+---
+
+## **2. Shorthand Character Classes**
+| Class | Matches |
+|-------|---------|
+| `\d` | any digit (0–9) |
+| `\w` | letters, digits, underscore |
+| `\s` | whitespace (space, tab, newline) |
+
+### **Negated versions**
+Use uppercase to mean “NOT”:
+
+| Class | Matches |
+|-------|---------|
+| `\D` | do not match a digit |
+| `\W` | do not match a word character |
+| `\S` | do not match whitespace |
+
+---
+
+## **3. Custom Character Classes (`[...]`)**
+Match **one character** from a list:
+
+```js
+/[abcdf]/   // A, B, C, D, or F
+```
+
+### **Ranges**
+Use hyphens for consecutive characters:
+
+```js
+/[a-d]/     // a, b, c, d
+/[0-9]/     // digits
+/[a-zA-Z]/  // all letters
+```
+
+### **Mixing types**
+```js
+/[a-zA-Z0-9]/   // letters + digits (like \w but no underscore)
+```
+
+### **Literal hyphen**
+Place it at the **start or end**:
+
+```js
+/[-a-z]/  
+```
+
+---
+
+## **4. Combining Classes**
+You can include shorthand classes inside custom ones:
+
+```js
+/[-\w]/   // word characters + hyphen
+```
+
+---
+
+## **Key Idea**
+Character classes give you **precise control** over what characters your regex should accept or reject.
 
 ---
 
