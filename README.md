@@ -228,8 +228,3 @@ Makes `.` match **newlines**.
 | **d** | Indices | Adds match index ranges |
 
 ---
-
-If you want, I can also create:
-- a **visual diagram** showing how `lastIndex` moves with `g` and `y`
-- a **student quiz version**
-- a **micro‑card** that pairs with your other pocket sheets
