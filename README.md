@@ -483,4 +483,71 @@ Lookaheads and lookbehinds **peek** at surrounding text but **don’t consume it
 
 ---
 
+# **Regex Quantifiers — Summary**
+
+- Quantifiers let you specify **how many times** a pattern should repeat.
+- Instead of writing `\d\d\d\d`, you can use a quantifier: `\d{4}`.
+
+---
+
+## **Curly‑Brace Quantifiers**
+- **`{n}`** → match **exactly n** times  
+  - `\d{4}` matches exactly four digits.
+- **`{n,}`** → match **n or more** times  
+  - `\d{4,}` matches 4+ digits.
+- **`{n,m}`** → match **between n and m** times  
+  - `\d{4,6}` matches 4 to 6 digits.
+- You **cannot** specify only a maximum (e.g., `{,6}` is invalid).  
+  - Use `{1,6}` instead.
+
+---
+
+## **Shorthand Quantifiers**
+- **`?`** → match **0 or 1** (optional)  
+  - `[A-Z]?` = optional letter.
+- **`*`** → match **0 or more**  
+  - `[A-Z]*` = any number of letters.
+- **`+`** → match **1 or more**  
+  - `[A-Z]+` = at least one letter.
+  - 
+“Optional letter” =
+“There may be a letter here, but it’s okay if there isn’t.”
+
+---
+
+## **Examples**
+- Optional single letter + 4–6 digits:  
+  - `/^[A-Za-z]?\d{4,6}$/`
+  - “Match a string that may start with one letter, followed by 4 to 6 digits.”
+  - ^ start of string
+  - [A-Z]? - one optional letter, so may appear once or not at all
+  - Optional
+  - both work...A1234 (letter present) or 1234 (letter missing)
+  - \d{4,6} - match 4 to 6 digits
+  - $ end of string
+- Zero or more letters + 4–6 digits:  
+  - `/^[A-Za-z]*\d{4,6}$/`
+  - “A string that has any number of letters (including none), followed by 4 to 6 digits, and nothing else.”
+- One or more letters + 4–6 digits:  
+  - `/^[A-Za-z]+\d{4,6}$/`
+  - “A string that begins with at least one letter,
+  - followed immediately by 4 to 6 digits,
+  - with nothing else before or after.”
+  - [A-Za-z]+
+  - So, start with at least one letter not zero letters
+  - 1234 and !abc don't work
+  - \d{4,6}
+  - After letters have 4, 5, or 6 digits
+  - 1 letter and 3 digits does not work A123
+  - `^...$`
+  - start with letters and end with digits
+
+---
+
+## **Key Idea**
+Quantifiers make regex **shorter, clearer, and more flexible**, letting you control repetition without writing the same pattern multiple times.
+
+---
+
+
 
