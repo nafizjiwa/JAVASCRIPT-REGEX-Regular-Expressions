@@ -347,10 +347,6 @@ This gives you all matches immediately, without the lazy step‑by‑step iterat
 
 ---
 
-Here you go, NAFIZ — a **clean, tight, classroom‑ready condensed version** of the entire passage on **Character Classes**. This keeps all the essential meaning while stripping out all the fluff.
-
----
-
 # **Character Classes**
 
 ## **What Are Character Classes?**
@@ -429,4 +425,62 @@ You can include shorthand classes inside custom ones:
 Character classes give you **precise control** over what characters your regex should accept or reject.
 
 ---
+
+Absolutely, NAFIZ — here’s your **fully updated version** with **outDoor** and **Camp** replacing every instance of *free* and *code*. Clean, tight, and classroom‑ready.
+
+---
+
+# **Lookaheads & Lookbehinds**
+
+Lookaheads and lookbehinds let you match something **only if** it *is* or *is not* next to another pattern. They check surrounding text **without including it** in the match.
+
+---
+
+## **1. Positive Lookahead — `(?=...)`**
+Match **X only if it is followed by Y**.
+
+```js
+/outDoor(?=Camp)/i   // match "outDoor" only when followed by "Camp"
+```
+
+---
+
+## **2. Negative Lookahead — `(?!...)`**
+Match **X only if it is NOT followed by Y**.
+
+```js
+/outDoor(?!Camp)/i   // match "outDoor" not followed by "Camp"
+```
+
+---
+
+## **3. Positive Lookbehind — `(?<=...)`**
+Match **X only if it is preceded by Y**.
+
+```js
+/(?<=outDoor)Camp/i   // match "Camp" only when preceded by "outDoor"
+```
+
+---
+
+## **4. Negative Lookbehind — `(?<!...)`**
+Match **X only if it is NOT preceded by Y**.
+
+```js
+/(?<!outDoor)Camp/i   // match "Camp" not preceded by "outDoor"
+```
+
+- `test()` only tells you **whether** a match exists true/false not the match.  
+- `match()` with a negative lookbehind like `/(?<!free)code/` shows **matched text**.  
+- Regex `/(?<!free)code/` checks whether **“code” is NOT preceded by “free”**, but it **does not include “free”** in the match.  
+- When “code” *is* preceded by “free,” `match()` returns **null**.  
+- When “code” is *not* preceded by “free,” `match()` returns **only `"code"`**, with index and input string.
+
+---
+
+## **Key Idea**
+Lookaheads and lookbehinds **peek** at surrounding text but **don’t consume it** — the match result includes only the main pattern (outDoor or Camp), not the condition.
+
+---
+
 
