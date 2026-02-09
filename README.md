@@ -40,8 +40,9 @@ regex.methodname(string)
 - It returns an array with details,
 
 ### **C. `match()`**
-- Searches for pattern occurances in String
+- Searches for 1st occurance of pattern in String
 - Returns 1st element in **array** if match or **null** if no match.
+- To match all occurances use global flag (g) 
 
 ```js
 string.methodname(regex)
@@ -55,14 +56,52 @@ string.methodname(regex)
 - `input` → original string  
 - `groups` → captured groups (if any)
 
+### **C.a `matchAll()`**
+- Returns an iterator of all pattern matches against a string.
+- EACH ELEMENT of the iterator is an array containing details about the match
+- **BEST WHEN** you need detailed information about all matches in a string.
+```js
+let str = "Hello world! This is a test string.";
+let regex = /[a-zA-Z]+/g;
+
+let matches = str.matchAll(regex);
+
+for (let match of matches) {
+    console.log(match);
+}
+[ 'Hello', index: 0, input: 'Hello world! This is a test string.', groups: undefined ]
+[ 'world', index: 6, input: 'Hello world! This is a test string.', groups: undefined ]
+ETC...
+```
+
 ### **D. `replace()`**
 - Replaces matched text with new text.
+- To replace all occurances use global flag (g)
 
 ```js
 string.methodname(regex)
 "freecodecamp is cool"
   .replace(/freecodecamp/, "freeCodeCamp");
 // "freeCodeCamp is cool"
+```
+### **D.a `replaceAll()`**
+- Replaces all occurrences of a pattern with a string.
+
+```js
+let str = "apple,banana,apple,grape";
+let newStr = str.replaceAll("apple", "orange");
+console.log(newStr);
+// Output: "orange,banana,orange,grape"
+```
+### **E. `search()`**
+- Searches a pattern within a string and returns the INDEX of the first occurrence or -1 if not found.
+
+```js
+let str = "The quick brown fox jumps over the lazy dog";
+let pattern = /brown/;
+
+let result = str.search(pattern);
+console.log(result); // Output: 10
 ```
 ## **3. Key Behaviors**
 
