@@ -1,7 +1,8 @@
 # JAVASCRIPT-REGEX-Regular-Expressions
 ## **What Are Regular Expressions (REGEX)?**
 - 2 ways to create regular expresions
-    1. literal notation using slashes '/pattern/'
+    1. literal notation use a regex wrapper, slashes for start and end
+               - '/pattern/'
     2. RegExp constructor new RegExp('pattern')
 
 ## **1. How to Write REGEX expresions PATTERN
@@ -434,7 +435,7 @@ This gives you all matches immediately, without the lazy step‑by‑step iterat
 # **Character Classes**
 
 ## **What Are Character Classes?**
-Character classes let you match **sets** of characters instead of writing each one manually.
+- Character classes let you match **sets** of characters instead of writing each one manually.
 
 ---
 
@@ -467,7 +468,8 @@ Use uppercase to mean “NOT”:
 ---
 
 ## **3. Custom Character Classes (`[...]`)**
-Match **one character** from a list:
+- For custom character use slector `[]` the `[range]` within selector
+- Match **one character** from this range or list:
 
 ```js
 /[abcdf]/   // A, B, C, D, or F
