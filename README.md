@@ -5,13 +5,13 @@
     2. RegExp constructor new RegExp('pattern')
 
 ## **1. How to Write REGEX expresions PATTERN
-A. Simple Pattern
-B. Special Characters
-    - enhance pattern matching
-    - * matches zero or more of preceding item.
+A. Simple Pattern </br>
+B. Special Characters</br>
+    - enhance pattern matching</br>
+    - * matches zero or more of preceding item.</br>
     
 C. or Combine simple pattern with characters
-    - /ab*c/ matches "ac", "abc", "abbc",
+    - /ab*c/ matches "ac", "abc", "abbc",</br>
 
 #### A. Simple Pattern
 - Match **exact CHARACTERS between slashes** used to search, test, extract, and replace text.
