@@ -158,22 +158,6 @@ regex.methodname(string)
 - **`split()`** → “Cut the string wherever this pattern appears.”
 ---
 
-## **5. Basic Regex Syntax**
-
-| Pattern | Meaning |
-|---------|---------|
-| `/abc/` | literal match |
-| `/abc/i` | case‑insensitive |
-| `/abc/g` | global (find all matches) |
-| `.` | any character |
-| `m` | multi line |
-| `\d` | digit |
-| `\w` | word character |
-| `+` | one or more of preceding|
-| `*` | zero or more of preceding |
-| `?` | optional |
-
----
 
 # **Regular Expression Modifiers (Flags) **
 
@@ -230,8 +214,9 @@ r.test("outDoorCamp is great"); // false (starts searching from lastIndex)
 ---
 
 # **4. Anchors (Used With Flags)**
+- Represent postition not characters in a string
 
-| Anchor | Meaning |
+| Main Anchors | Meaning |
 |--------|---------|
 | `^` | Match start of string/line |
 | `$` | Match end of string/line |
@@ -246,15 +231,12 @@ Examples:
 ---
 
 # **5. `d` — Indices Flag**
-Adds an `indices` array showing the **start and end positions** of matches.
+- Gives an array with the **start and end positions** of the match.
 
 ```js
 "we love outDoorCamp".match(/outDoorCamp/di);
 // indices: [ [8, 20] ]
 ```
-
-✔ Great for text processing and highlighting.
-
 ---
 
 # **6. `u` — Unicode Mode**
@@ -263,7 +245,6 @@ Enables full Unicode support (emoji, special characters).
 ```js
 /🍎/u.test("I have an apple 🍎"); // true
 ```
-
 ---
 
 # **7. `y` — Sticky Mode**
@@ -274,7 +255,6 @@ const r = /outDoorCamp/y;
 r.lastIndex = 5;
 r.test("xxxxxoutDoorCamp"); // true only if match starts at index 5
 ```
-
 ✔ Precise control over match position.
 
 ---
@@ -285,26 +265,57 @@ Makes `.` match **newlines**.
 ```js
 /outDoorCamp.world/s.test("outDoorCamp\nworld"); // true
 ```
-
 ✔ Useful when scanning multi‑line text as one block.
 
 ---
 
-# **Summary Table**
+# **🔥Summary Table: Regex Tokens & Flags **
 
-| Flags | Name | Effect |
-|------|------|--------|
-| **i** | Ignore Case | Case‑insensitive matching |
-| **g** | Global | Find all matches; stateful `.test()` |
-| **m** | Multiline | `^` and `$` match per line |
-| **.** | Wildcard | match any one character except a newline|
-| **s** | Single‑line | `s` helps `.` match newlines |
-| **y** | Sticky | Match only at `lastIndex` |
-| **u** | Unicode | Enables full Unicode support |
-| **v** | Extended Unicode | More advanced Unicode classes |
-| **d** | Indices | Adds match index ranges |
+## **A. Regex Tokens (NOT flags)**  
+These appear *inside* the pattern and control matching behavior.
 
+| Token | Name | Meaning |
+|-------|------|---------|
+| `.` | **Wildcard** | Matches **any character** except newline |
+| `\w` | **Word Character Class** | Matches letters, digits, underscore |
+| `\d` | **Digit Character Class** | Matches 0–9 |
+| `\s` | **Whitespace Character Class** | Matches space, tab, newline |
+| `+` | **One‑or‑More Quantifier** | Match 1 or more of the preceding token |
+| `*` | **Zero‑or‑More Quantifier** | Match 0 or more of the preceding token |
+| `?` | **Optional Quantifier** | Match 0 or 1 of the preceding token |
+| `[abc]` | **Character Class** | Match **one** of the listed characters |
+| `[^abc]` | **Negated Character Class** | Match **one** character NOT in the list |
+| `/abc/` | **Literal Pattern** | Match the exact text “abc” |
+| `/abc/g` | **Literal Pattern + flag** | Glob(find all matches) |
+| `/abc/i` | **Literal Pattern + flag** | Case-insesitive match |
 ---
+
+## **B. Regex Flags (Modifiers)**  
+FLAGS appear *after* the closing/final slash: `/pattern/flags`
+
+| Flag | Name | Meaning |
+|------|------|---------|
+| `i` | **Ignore Case** | Case‑insensitive matching |
+| `g` | **Global** | Find **all** matches, not just the first |
+| `m` | **Multiline** | `^` and `$` match per line |
+| `s` | **DotAll** | `.` matches newline |
+| `u` | **Unicode** | Enables full Unicode support |
+| `y` | **Sticky** | Match must start at `lastIndex` |
+| `d` | **Indices** | Return start/end indices of matches |
+| `v` | **Extended Unicode** | Advanced Unicode class(newJS) |
+---
+
+# **🔥 Important Clarification**
+These are **not flags**:
+
+- `.`
+- `\w`
+- `+`
+- `*`
+- `?`
+- `[abc]`
+
+They are **tokens**, **quantifiers**, or **character classes**.
 
 # **Match & Replace All Occurrences**
 
