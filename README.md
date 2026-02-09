@@ -927,9 +927,15 @@ Here is the **fully updated, clean, classroom‑ready master summary** — still
 ---
 
 # **7. Character Classes**
+- All types of character classes match just a **`SINGLE CHARACTER`**
 
 ### **Wildcard (`.`)**
 - Any single character (except newline unless using `s`).
+
+       [0-9]   // custom class
+       \d      // shorthand class
+- Both match a single digit.
+
 
 ### **Shorthand Classes**
 | Class | Matches |
@@ -946,7 +952,7 @@ Here is the **fully updated, clean, classroom‑ready master summary** — still
 | `\S` | NOT whitespace |
 
 ### **Custom Classes `[ ... ]`**
-- Match **one** character from a set.
+- Match **one** character from a set **`THAT YOU DEFINE`**.
 
 Examples:
 - `[abc]` → a, b, or c  
