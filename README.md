@@ -1,8 +1,20 @@
 # JAVASCRIPT-REGEX-Regular-Expressions
+## **What Are Regular Expressions (REGEX)?**
+- 2 ways to create regular expresions
+    1. literal notation using slashes '/pattern/'
+    2. RegExp constructor new RegExp('pattern')
 
-## **1. What Are Regular Expressions?**
-- A **pattern‑matching syntax** used to search, test, extract, and replace text.
-- REGEX is written between **slashes**:
+## **1. How to Write REGEX expresions PATTERN
+A. Simple Pattern
+B. Special Characters
+    - enhance pattern matching
+    - * matches zero or more of preceding item.
+    
+C. or Combine simple pattern with characters
+    - /ab*c/ matches "ac", "abc", "abbc",
+
+#### A. Simple Pattern
+- Match **exact CHARACTERS between slashes** used to search, test, extract, and replace text.
 
 ```js
 const regex = /outDoorCamp/;
@@ -74,8 +86,8 @@ const regex = /outDoorCamp/;
 | `m` | multi line |
 | `\d` | digit |
 | `\w` | word character |
-| `+` | one or more |
-| `*` | zero or more |
+| `+` | one or more of preceding|
+| `*` | zero or more of preceding |
 | `?` | optional |
 
 ---
