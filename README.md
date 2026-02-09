@@ -7,11 +7,11 @@
 ## **1. How to Write REGEX expresions PATTERN
 A. Simple Pattern </br>
 B. Special Characters</br>
-    - enhance pattern matching</br>
-    - character * matches zero or more of preceding item.</br>
+- enhance pattern matching</br>
+- character * matches zero or more of preceding item.</br>
     
-C. or Combine simple pattern with characters
-    - /ab*c/ matches "ac", "abc", "abbc",</br>
+C. or Combine simple pattern with characters</br>
+- /ab*c/ matches "ac", "abc", "abbc",</br>
 
 #### A. Simple Pattern
 - Match **exact CHARACTERS between slashes** used to search, test, extract, and replace text.
