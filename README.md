@@ -19,21 +19,32 @@ C. or Combine simple pattern with characters
 ```js
 const regex = /outDoorCamp/;
 ```
-## **2. Common Regex Methods**
+## **2. Combine Regex with Methods**
+- Methods for RegExp and String objects
+**Methods have 2 syntax**
+- regex.methodname(string)
+- string.methodname(regex)
 
 ### **A. `test()`**
-- Checks if a string **matches** the pattern.
+- Checks if a **STRING matches** the pattern.
 - Returns **true/false**.
 
 ```js
+regex.methodname(string)
 /abc/.test("abc");        // true
 /abc/.test("I love abc"); // true
 /abc/.test("ab");         // false
 ```
-### **B. `match()`**
-- Returns an **array** if match or **null** if no match.
+### **B. `exec()`**
+- Searches for pattern within a string.
+- It returns an array with details,
+
+### **C. `match()`**
+- Searches for pattern occurances in String
+- Returns 1st element in **array** if match or **null** if no match.
 
 ```js
+string.methodname(regex)
 "outDoorCamp".match(/outDoorCamp/);
 // ['outDoorCamp', index: 0, input: 'outDoorCamp', groups: undefined]
 ```
@@ -44,10 +55,11 @@ const regex = /outDoorCamp/;
 - `input` → original string  
 - `groups` → captured groups (if any)
 
-### **C. `replace()`**
+### **D. `replace()`**
 - Replaces matched text with new text.
 
 ```js
+string.methodname(regex)
 "freecodecamp is cool"
   .replace(/freecodecamp/, "freeCodeCamp");
 // "freeCodeCamp is cool"
@@ -56,6 +68,7 @@ const regex = /outDoorCamp/;
 
 ### **Regex ix Case‑Sensitive**
 ```js
+regex.methodname(string)
 /freeCodeCamp/.test("freecodecamp"); // false
 ```
 
@@ -72,7 +85,38 @@ const regex = /outDoorCamp/;
 | `test()` | RegExp | string | boolean | Check if pattern exists |
 | `match()` | string | RegExp | array or null | Get match details |
 | `replace()` | string | RegExp or string | new string | Replace matched text |
+---
 
+# **🔥 JavaScript Regex vs String Methods — Comparison Table**
+
+## **1. RegExp Object Methods (regex.method(string))**
+
+| Method | Called On | Argument | Returns | Best Use Case |
+|--------|-----------|----------|---------|----------------|
+| **`regex.test(string)`** | RegExp | string | **Boolean** (`true`/`false`) | Checking if a pattern exists (validation) |
+| **`regex.exec(string)`** | RegExp | string | **Array** with match + groups + index, or **null** | Extracting data, iterating through multiple matches with `g` |
+
+---
+
+## **2. String Methods (string.method(regex))**
+
+| Method | Called On | Argument | Returns | Best Use Case |
+|--------|-----------|----------|---------|----------------|
+| **`string.match(regex)`** | String | RegExp | Array or null | Simple matching; with `g` → array of all matches |
+| **`string.search(regex)`** | String | RegExp | Index or -1 | Finding the position of the first match |
+| **`string.replace(regex, replacement)`** | String | RegExp or string | New string | Replacing text (first match unless `g`) |
+| **`string.split(regex)`** | String | RegExp | Array of substrings | Splitting text using a pattern |
+
+---
+
+# **🔥 Quick Summary (One‑Liners)**
+
+- **`test()`** → “Does it match?”  
+- **`exec()`** → “Give me the match details.”  
+- **`match()`** → “Give me matches from the string.”  
+- **`search()`** → “Where is the first match?”  
+- **`replace()`** → “Swap matched text with something else.”  
+- **`split()`** → “Cut the string wherever this pattern appears.”
 ---
 
 ## **5. Basic Regex Syntax**
