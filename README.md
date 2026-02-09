@@ -8,7 +8,7 @@
 A. Simple Pattern </br>
 B. Special Characters</br>
     - enhance pattern matching</br>
-    - * matches zero or more of preceding item.</br>
+    - character * matches zero or more of preceding item.</br>
     
 C. or Combine simple pattern with characters
     - /ab*c/ matches "ac", "abc", "abbc",</br>
