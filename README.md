@@ -468,11 +468,12 @@ Use uppercase to mean “NOT”:
 ---
 
 ## **3. Custom Character Classes (`[...]`)**
-- For custom character use slector `[]` the `[range]` within selector
-- Match **one character** from this range or list:
-
+- USE selector `[]` the `[range]` within selector
+- Selector `[ ]` says Match **one character** from this range or list:
+ 
 ```js
 /[abcdf]/   // A, B, C, D, or F
+//Match ONE character that is either a, b, c, d, or f.”
 ```
 
 ### **Ranges**
@@ -489,13 +490,14 @@ Use hyphens for consecutive characters:
 /[a-zA-Z0-9]/   // letters + digits (like \w but no underscore)
 ```
 
-### **Literal hyphen**
-Place it at the **start or end**:
+### **Literal Character 
+**
+- When `-` hyphen placed at the **start or end**:
 
 ```js
-/[-a-z]/  
-```
-
+/[-a-z]/
+“Match 1 character: either a hyphen - OR any lowercase letter from a-z.”
+Matches - or a or b or c...z
 ---
 
 ## **4. Combining Classes**
@@ -505,14 +507,8 @@ You can include shorthand classes inside custom ones:
 /[-\w]/   // word characters + hyphen
 ```
 
----
-
 ## **Key Idea**
 Character classes give you **precise control** over what characters your regex should accept or reject.
-
----
-
-Absolutely, NAFIZ — here’s your **fully updated version** with **outDoor** and **Camp** replacing every instance of *free* and *code*. Clean, tight, and classroom‑ready.
 
 ---
 
