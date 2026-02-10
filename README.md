@@ -14,6 +14,7 @@
 | `\D` | Digit Character Class| Match any ONE character that is NOT a digit |
 | `\s` | Whitespace Character Class | Match any ONE whitespace character space, tab, newline 
 | `\S` | Whitespace Character Class |Match any ONE character that is NOT whitespace |
+|[...]| Character Class | Means Match exactly 1 Character between the brackets|
 | `[abc]` | Character Class| Match ONE of: a, b, or c or of listed|
 | `[^abc]` | Negated Character Class| Match ONE character that is NOT a, b, or c or NOT in list|
 | `[a-z]` | **Literal Pattern**| Match ONE lowercase letter a–z |
@@ -170,6 +171,62 @@ str.replace(regex, "outDoorCamp");
 ⚠ With `.test()`, `g` makes the regex **stateful** (`lastIndex` moves).
 
 ---
+
+# ✅ **Meaning of `/[###]/`**
+
+Inside a regex, square brackets `[...]` define a **character class**.
+
+A character class means:
+
+> “Match **one** character from this set.”
+
+So:
+
+```
+/[###]/
+```
+
+is simply a character class containing **three literal `#` characters**.
+
+But since all three are the same, this is equivalent to:
+
+```
+/[#]/
+```
+
+or even just:
+
+```
+/#/
+```
+
+### ✔️ What it matches
+- `"#"` (a single hash character)
+
+### ❌ What it does NOT match
+- `"##"` (two hashes)
+- `"###"` (three hashes)
+- any other character
+
+---
+
+# 🔍 Why `[###]` doesn’t mean “three hashes”
+A character class **never** means “repeat this character.”  
+It means “choose one character from this list.”
+
+So `[###]` is the same as `[ # ]` repeated — but still only matches **one** `#`.
+
+---
+
+# 🧠 Summary
+
+| Pattern | Meaning |
+|--------|---------|
+| `[###]` | match **one** `#` |
+| `###` | match the literal string `"###"` |
+| `#{3}` | match exactly **three** `#` characters |
+
+
 
 
 
