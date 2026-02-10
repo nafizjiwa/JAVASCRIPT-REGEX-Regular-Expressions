@@ -1,4 +1,202 @@
+# 
+# **🔥Summary **REGEX ONE‑PAGE REGEX TOKENS AND FLAGS CHEAT SHEET**
+
+## **1. Character Classes (these MATCH characters)**
+- Tokens appear *inside* the pattern and control matching behavior.
+
+| Token | Name | Meaning |
+|-------|--------|---------|
+| `.` | Wildcard | Match any ONE character except newline |
+| `\w` | Word Character Class| Match any ONE word character (A–Z, a–z, 0–9, `_`) |
+| `\W` | Match any ONE character that is NOT a word character |
+| `\d` | Digit Character Class| Match any ONE digit (0–9) |
+| `\D` | Digit Character Class| Match any ONE character that is NOT a digit |
+| `\s` | Whitespace Character Class | Match any ONE whitespace character space, tab, newline 
+| `\S` | Whitespace Character Class |Match any ONE character that is NOT whitespace |
+| `[abc]` | Character Class| Match ONE of: a, b, or c or of listed|
+| `[^abc]` | Negated Character Class| Match ONE character that is NOT a, b, or c or NOT in list|
+| `[a-z]` | **Literal Pattern**| Match ONE lowercase letter a–z |
+| `[A-Z]` | **Literal Pattern**| Match ONE uppercase letter A–Z |
+| `/abc/` | **Literal Pattern** | Match the exact text “abc” |
+| `/abc/g` | **Literal Pattern + flag** | Glob(find all matches) |
+| `/abc/i` | **Literal Pattern + flag** | Case-insesitive match |
+| `[0-9]` | Match ONE digit 0–9 |
+| `[A-F0-9]` | Match ONE hexadecimal digit |
+| `[\w\d]` | Match ONE word character or digit |
+
+---
+## **2. Regex Flags (Modifiers)**  
+FLAGS appear *after* the closing/final slash: `/pattern/flags`
+
+| Flag | Name | Meaning |
+|------|------|---------|
+| `i` | **Ignore Case** | Case‑insensitive matching |
+| `g` | **Global** | Find **all** matches, not just the first |
+| `m` | **Multiline** | `^` and `$` match per line |
+| `s` | **DotAll** | `.` matches newline |
+| `u` | **Unicode** | Enables full Unicode support |
+| `y` | **Sticky** | Match must start at `lastIndex` |
+| `d` | **Indices** | Return start/end indices of matches |
+| `v` | **Extended Unicode** | Advanced Unicode class(newJS) |
+---
+# **🔥 Important Clarification**
+These are **not flags**:
+
+- `.`
+- `\w`
+- `+`
+- `*`
+- `?`
+- `[abc]`
+
+They are **tokens**, **quantifiers**, or **character classes**.
+
+## **3. Anchors (these DO NOT match characters — they match positions)**
+
+| Token | Meaning |
+|-------|---------|
+| `^` | Assert position at start of string |
+| `$` | Assert position at end of string |
+| `\b` | Assert a word boundary position |
+| `\B` | Assert a non‑word‑boundary position |
+
+---
+## **4. Quantifiers (these modify how many characters to match)**
+
+| Token |Name | Meaning |
+|-------|---------|----------|
+| `*` |**Zero‑or‑More Quantifier** | Match 0 or more of the previous token |
+| `+` |**One‑or‑More Quantifier** | Match 1 or more of the previous token |
+| `?` |**Optional Quantifier** | Match 0 or 1 of the previous token |
+| `{n}` | Match exactly n occurrences |
+| `{n,}` | Match n or more occurrences |
+| `{n,m}` | Match between n and m occurrences |
+
+---
+## **5. Grouping & Alternation (these do NOT match characters by themselves)**
+
+| Token | Meaning |
+|-------|---------|
+| `(abc)` | Capture the group “abc” |
+| `(?:abc)` | Non‑capturing group |
+| `a\|b` | Match a OR b |
+| `(a\|b\|c)` | Match one of a, b, or c |
+
+---
+## **6. Escaped Literals (these MATCH literal characters)**
+
+| Token | Meaning |
+|-------|---------|
+| `\.` | Match a literal dot `.` |
+| `\*` | Match a literal asterisk `*` |
+| `\+` | Match a literal plus `+` |
+| `\?` | Match a literal question mark `?` |
+| `\(` `\)` | Match literal parentheses |
+| `\[` `\]` | Match literal brackets |
+| `\\` | Match a literal backslash |
+
+---
+## **7. Unicode Property Classes (these MATCH characters)**  
+*(Requires `u` flag)*
+
+| Token | Meaning |
+|-------|---------|
+| `\p{L}` | Match any letter |
+| `\p{N}` | Match any number |
+| `\p{P}` | Match punctuation |
+| `\p{S}` | Match symbol |
+| `\p{Z}` | Match separator |
+| `\p{Ll}` | Match lowercase letter |
+| `\p{Lu}` | Match uppercase letter |
+
+Example:
+
+```js
+/\p{L}/u
+```
+---
+## **8. Lookarounds (these do NOT match characters — they assert conditions)**
+
+| Token | Meaning |
+|-------|---------|
+| `(?=...)` | Positive lookahead |
+| `(?!...)` | Negative lookahead |
+| `(?<=...)` | Positive lookbehind |
+| `(?<!...)` | Negative lookbehind |
+---
+# **Match & Replace All Occurrences**
+
+## **9. Default Behavior (Without global `g` Flag)**
+
+- `match()` → returns **only the first match**
+- `replace()` → replaces **only the first occurrence**
+
+```js
+const regex = /outDoorCamp/;
+str.match(regex);     // first match only
+str.replace(regex, "outDoorCamp"); // replaces first only
+```
+# **10. Using the `g` (Global) Flag**
+Add `g` to match **all occurrences**.
+
+```js
+const regex = /outDoorCamp/g;
+str.match(regex);     // ['outDoorCamp', 'outDoorCamp']
+str.replace(regex, "outDoorCamp");
+// "outDoorCamp is the best we love outDoorCamp"
+```
+
+✔ `g` + `match()` returns **an ARRAY of all matches**  
+✔ `g` + `replace()` replaces **every occurrence**
+
+⚠ With `.test()`, `g` makes the regex **stateful** (`lastIndex` moves).
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
 # JAVASCRIPT-REGEX-Regular-Expressions
+
 ## **What Are Regular Expressions (REGEX)?**
 - 2 ways to create regular expresions
     1. literal notation use a regex wrapper, slashes for start and end
@@ -271,85 +469,8 @@ Makes `.` match **newlines**.
 
 ---
 
-# **🔥Summary Table: Regex Tokens & Flags **
 
-## **A. Regex Tokens (NOT flags)**  
-These appear *inside* the pattern and control matching behavior.
 
-| Token | Name | Meaning |
-|-------|------|---------|
-| `.` | **Wildcard** | Matches **any character** except newline |
-| `\w` | **Word Character Class** | Matches letters, digits, underscore |
-| `\d` | **Digit Character Class** | Matches 0–9 |
-| `\s` | **Whitespace Character Class** | Matches space, tab, newline |
-| `+` | **One‑or‑More Quantifier** | Match 1 or more of the preceding token |
-| `*` | **Zero‑or‑More Quantifier** | Match 0 or more of the preceding token |
-| `?` | **Optional Quantifier** | Match 0 or 1 of the preceding token |
-| `[abc]` | **Character Class** | Match **one** of the listed characters |
-| `[^abc]` | **Negated Character Class** | Match **one** character NOT in the list |
-| `/abc/` | **Literal Pattern** | Match the exact text “abc” |
-| `/abc/g` | **Literal Pattern + flag** | Glob(find all matches) |
-| `/abc/i` | **Literal Pattern + flag** | Case-insesitive match |
----
-
-## **B. Regex Flags (Modifiers)**  
-FLAGS appear *after* the closing/final slash: `/pattern/flags`
-
-| Flag | Name | Meaning |
-|------|------|---------|
-| `i` | **Ignore Case** | Case‑insensitive matching |
-| `g` | **Global** | Find **all** matches, not just the first |
-| `m` | **Multiline** | `^` and `$` match per line |
-| `s` | **DotAll** | `.` matches newline |
-| `u` | **Unicode** | Enables full Unicode support |
-| `y` | **Sticky** | Match must start at `lastIndex` |
-| `d` | **Indices** | Return start/end indices of matches |
-| `v` | **Extended Unicode** | Advanced Unicode class(newJS) |
----
-
-# **🔥 Important Clarification**
-These are **not flags**:
-
-- `.`
-- `\w`
-- `+`
-- `*`
-- `?`
-- `[abc]`
-
-They are **tokens**, **quantifiers**, or **character classes**.
-
-# **Match & Replace All Occurrences**
-
-## **1. Default Behavior (Without global `g` Flag)**
-
-- `match()` → returns **only the first match**
-- `replace()` → replaces **only the first occurrence**
-
-```js
-const regex = /outDoorCamp/;
-str.match(regex);     // first match only
-str.replace(regex, "outDoorCamp"); // replaces first only
-```
-
----
-
-# **2. Using the `g` (Global) Flag**
-Add `g` to match **all occurrences**.
-
-```js
-const regex = /outDoorCamp/g;
-str.match(regex);     // ['outDoorCamp', 'outDoorCamp']
-str.replace(regex, "outDoorCamp");
-// "outDoorCamp is the best we love outDoorCamp"
-```
-
-✔ `g` + `match()` returns **an ARRAY of all matches**  
-✔ `g` + `replace()` replaces **every occurrence**
-
-⚠ With `.test()`, `g` makes the regex **stateful** (`lastIndex` moves).
-
----
 
 # **3. matchAll() — Modern, Powerful Matching**
 `matchAll()` returns an **iterator NOT ARRAY** with details of index, input, groups.
@@ -1158,5 +1279,3 @@ Capturing groups extract or reuse text; non‑capturing groups organize patterns
 | `replaceAll()` | Yes (regex) | string | ✔ | Simplest |
 
 ---
-
-
