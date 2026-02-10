@@ -30,11 +30,11 @@
 |/^\s*$/|Blank Input|Is the entire input blank or only whitespace|
 
 Examples:
-const helpRegex = /please help|assist me/i;
-const dollarRegex = /[0-9]+\s*(?:hundred|thousand|million|billion)?\s+dollars/i;
-const freeRegex = /(?:^|\s)fr[e3][e3] m[o0]n[e3]y(?:$|\s)/i;
-const stockRegex = /(?:^|\s)[s5][t7][o0][c{[(]k [a@4]l[e3]r[t7](?:$|\s)/i;
-const dearRegex = /dear friend/i;
+const helpRegex = /please help|assist me/i;</br>
+const dollarRegex = /[0-9]+\s*(?:hundred|thousand|million|billion)?\s+dollars/i;</br>
+const freeRegex = /(?:^|\s)fr[e3][e3] m[o0]n[e3]y(?:$|\s)/i;</br>
+const stockRegex = /(?:^|\s)[s5][t7][o0][c{[(]k [a@4]l[e3]r[t7](?:$|\s)/i;</br>
+const dearRegex = /dear friend/i;</br>
 
 ---
 ## **2. Regex Flags (Modifiers)**  
