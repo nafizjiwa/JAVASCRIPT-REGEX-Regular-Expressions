@@ -223,7 +223,7 @@ str.replace(regex, "outDoorCamp");
 
 ## **1. How to Write REGEX expresions PATTERN
 A. Simple Pattern </br>
-    - /cat/ Matches 'cat', 'category', 'copycat'
+    - /cat/ Matches 'cat', 'category', 'copycat'</br>
 B. Special Characters</br>
 - enhance pattern matching</br>
 - character * matches zero or more of preceding item.</br>
