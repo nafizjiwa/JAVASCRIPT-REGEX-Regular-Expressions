@@ -3,6 +3,7 @@
 
 ## **1. Character Classes (these MATCH characters)**
 - Tokens appear *inside* the pattern and control matching behavior.
+- character clas is defined by [...];
 
 | Token | Name | Meaning |
 |-------|--------|---------|
@@ -558,6 +559,7 @@ This gives you all matches immediately, without the lazy step‑by‑step iterat
 
 ## **What Are Character Classes?**
 - Character classes let you match **sets** of characters instead of writing each one manually.
+- Create a character class with square brackets which matches any character within the [a list];
 
 ---
 
