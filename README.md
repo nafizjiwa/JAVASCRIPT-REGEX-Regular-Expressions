@@ -3,7 +3,7 @@
 
 ## **1. Character Classes (these MATCH characters)**
 - Tokens appear *inside* the pattern and control matching behavior.
-- character clas is defined by [...];
+- character class is defined by [...];
 
 | Token | Name | Meaning |
 |-------|--------|---------|
@@ -27,6 +27,7 @@
 |`[e3]`| Example |Match ONE character either e or 3|
 |`(?:^|\s)`|Example | Matches a space or the start/beginning of the string|
 |`(?:$|\s)`|Example | Matches a space or the end of the string|
+
 Examples:
 const helpRegex = /please help|assist me/i;
 const dollarRegex = /[0-9]+\s*(?:hundred|thousand|million|billion)?\s+dollars/i;
@@ -62,13 +63,16 @@ These are **not flags**:
 They are **tokens**, **quantifiers**, or **character classes**.
 
 ## **3. Anchors (these DO NOT match characters — they match positions)**
+- 'word character' (\w ) - a-z, A-Z, 0-9, _ ;
+- 'Non-word character' (space, punct, symbols)
 
-| Token | Meaning |
-|-------|---------|
-| `^` | Assert position at start of string |
-| `$` | Assert position at end of string |
-| `\b` | Assert a word boundary position |
-| `\B` | Assert a non‑word‑boundary position |
+| Token |Name|Meaning |example|
+|-------|---------|--------|------|
+| `^` |position|Only at start of string /^[cC]/-->cat Car cart dog= Matches only cat|
+| `$` |position|only at end of string |/cat$/--> Matches 'copycat' not 'category'|
+|^ and $ |combined|Match exact word|/^hello$/--> Matcches 'hello' not 'hello world'|
+| `\b` |word boundary `edge` |Match any word that begin with what follows|/\b[cC]/--> Match anyword begin with C c anywhere in string|
+| `\B` | not a word‑boundary `inside`|Match anywhere in the middle|/\Bcat/--> Matches 'cat' in education|
 
 ---
 ## **4. Quantifiers (these modify how many characters to match)**
@@ -215,6 +219,7 @@ str.replace(regex, "outDoorCamp");
 
 ## **1. How to Write REGEX expresions PATTERN
 A. Simple Pattern </br>
+    - /cat/ Matches 'cat', 'category', 'copycat'
 B. Special Characters</br>
 - enhance pattern matching</br>
 - character * matches zero or more of preceding item.</br>
