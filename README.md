@@ -9,7 +9,7 @@
 |-------|--------|---------|
 | `.` | Wildcard | Match any ONE character except newline |
 | `\w` | Word Character Class| Match any ONE word character (A–Z, a–z, 0–9, `_`) |
-| `\W` | Match any ONE character that is NOT a word character |
+| `\W` | Match ANY character NOT a word character |space, punc, sym, emoj...|
 | `\d` | Digit Character Class| Match any ONE digit (0–9) |
 | `\D` | Digit Character Class| Match any ONE character that is NOT a digit |
 | `\s` | Whitespace Character Class | Match any ONE whitespace character space, tab, newline 
