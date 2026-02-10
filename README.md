@@ -28,9 +28,9 @@
 |`(?:^|\s)`|Example | Matches a space or the start/beginning of the string|
 |`(?:$|\s)`|Example | Matches a space or the end of the string|
 |/^\s*$/|Blank Input|Is the entire input blank or only whitespace|
-|^ |start of string||
-|\s* |   zero or more whitespace characters||
-|$ |     end of string|||
+||^ |start of string|
+||\s* |   zero or more whitespace characters|
+||$ |     end of string|
 
 Examples:
 const helpRegex = /please help|assist me/i;</br>
