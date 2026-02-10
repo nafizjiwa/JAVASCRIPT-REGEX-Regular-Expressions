@@ -686,10 +686,10 @@ Match **X only if it is NOT preceded by Y**.
 ```
 
 - `test()` only tells you **whether** a match exists true/false not the match.  
-- `match()` with a negative lookbehind like `/(?<!free)code/` shows **matched text**.  
-- Regex `/(?<!free)code/` checks whether **“code” is NOT preceded by “free”**, but it **does not include “free”** in the match.  
-- When “code” *is* preceded by “free,” `match()` returns **null**.  
-- When “code” is *not* preceded by “free,” `match()` returns **only `"code"`**, with index and input string.
+- `match()` with a negative lookbehind like `/(?<!out)door/` shows **matched text**.  
+- Regex `/(?<!out)door/` checks whether **“door” is NOT preceded by “out”**, but it **does not include “out”** in the match.  
+- When “door” *is* preceded by “out,” `match()` returns **null**.  
+- When “door” is *not* preceded by “out,” `match()` returns **only `"dooe"`**, with index and input string.
 
 ---
 
