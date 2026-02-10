@@ -243,8 +243,8 @@ const regex = /outDoorCamp/;
 - regex.methodname(string)
 - string.methodname(regex)
 
-### **A. `test()`**
-- Checks if a **STRING matches** the pattern.
+### **A. `test()`** to check string
+-Does this **STRING MATCH THE REGEX** or pattern.
 - Returns **true/false**.
 
 ```js
@@ -252,6 +252,14 @@ regex.methodname(string)
 /abc/.test("abc");        // true
 /abc/.test("I love abc"); // true
 /abc/.test("ab");         // false
+```
+### **a. `some()`** to check array
+- Belongs to Array not RegExp
+- Does at least one element in array satisfy a condition
+
+- ```js
+["a", " ", "b"].some(char => char === " ")
+// true
 ```
 
 ### **B. `exec()`**
