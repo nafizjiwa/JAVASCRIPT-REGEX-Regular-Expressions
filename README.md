@@ -36,6 +36,7 @@ regex.methodname(string)
 /abc/.test("I love abc"); // true
 /abc/.test("ab");         // false
 ```
+
 ### **B. `exec()`**
 - Searches for pattern within a string.
 - It returns an array with details,
