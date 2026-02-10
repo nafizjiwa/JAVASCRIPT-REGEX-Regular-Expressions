@@ -16,7 +16,9 @@
 | `\S` | Whitespace Character Class |Match any ONE character that is NOT whitespace |
 |[...]| Character Class | Means Match exactly 1 Character between the brackets|
 | `[abc]` | Character Class| Match ONE of: a, b, or c or of listed|
-| /[abc]{3}/ | Character Class |Match one character that is either a, b, or c. |
+| /[abc]{3}/ | Character Class |match exactly 3 characters from the set |
+|/[abc]+/| Character Class|Match one or more characters, each of which must be a, b, or c.|
+|/[abc]*/| Character Class|Match zero or more characters, each of which must be a,b,c even ''|
 | `[^abc]` | Negated Character Class| Match ONE character that is NOT a, b, or c or NOT in list|
 | `[a-z]` | **Literal Pattern**| Match ONE lowercase letter a–z |
 | `[A-Z]` | **Literal Pattern**| Match ONE uppercase letter A–Z |
