@@ -21,9 +21,18 @@
 | `/abc/` | **Literal Pattern** | Match the exact text “abc” |
 | `/abc/g` | **Literal Pattern + flag** | Glob(find all matches) |
 | `/abc/i` | **Literal Pattern + flag** | Case-insesitive match |
-| `[0-9]` | Match ONE digit 0–9 |
-| `[A-F0-9]` | Match ONE hexadecimal digit |
-| `[\w\d]` | Match ONE word character or digit |
+| `[0-9]` | **Literal Pattern| Match ONE digit 0–9 |
+| `[A-F0-9]` | **Literal Pattern| Match ONE hexadecimal digit |
+| `[\w\d]` | **Literal Pattern| Match ONE word character or digit |
+|`[e3]`| Example |Match ONE character either e or 3|
+|`(?:^|\s)`|Example | Matches a space or the start/beginning of the string|
+|`(?:$|\s)`|Example | Matches a space or the end of the string|
+Examples:
+const helpRegex = /please help|assist me/i;
+const dollarRegex = /[0-9]+\s*(?:hundred|thousand|million|billion)?\s+dollars/i;
+const freeRegex = /(?:^|\s)fr[e3][e3] m[o0]n[e3]y(?:$|\s)/i;
+const stockRegex = /(?:^|\s)[s5][t7][o0][c{[(]k [a@4]l[e3]r[t7](?:$|\s)/i;
+const dearRegex = /dear friend/i;
 
 ---
 ## **2. Regex Flags (Modifiers)**  
@@ -826,8 +835,6 @@ When you run:
 - Syntax: `(?<name>pattern)`
 - Named backreference in regex: `\k<name>`
 - Named backreference in replace: `$<name>`
-- Makes complex patterns easier to read.
-
 ---
 
 ### **Non‑Capturing Groups**
@@ -836,19 +843,11 @@ When you run:
 - Useful for OR patterns like:  
   `/out(?:door|trail)camp/`
 ---
-Ah, I see what happened — that final explanatory sentence didn’t get carried over into the condensed version. Here it is, clearly explained and included:
-
----
-
-# **Explanation of the Missing Line**
-
-### **Original idea:**
 > *“A non‑capturing group does not store the code|candy match separately in memory. But it can be helpful for creating alternate patterns without sacrificing readability or performance.”*
 
-### **Plain‑English meaning:**
-
-- A **non‑capturing group** `(?: ... )` groups patterns **without saving** what it matched.
-- It’s useful when you want to use parentheses **only for structure**, not for capturing.
+### **MEANING:**
+- **Non‑capturing group** `(?: ... )` groups patterns **but don't save the match**.
+- When parentheses are used **only for structure**, not for capturing.
 - This keeps your regex **cleaner**, **faster**, and avoids creating unnecessary `$1`, `$2`, etc.
 
 ### **Example:**
@@ -856,9 +855,7 @@ Ah, I see what happened — that final explanatory sentence didn’t get carried
 ```js
 /free(?:code|candy)camp/
 ```
-
 This matches:
-
 - `freecodecamp`
 - `freecandycamp`
 
