@@ -68,7 +68,7 @@ They are **tokens**, **quantifiers**, or **character classes**.
 
 | Token |Name|Meaning |example|
 |-------|---------|--------|------|
-| `^` |position|Only at start of string /^[cC]/-->cat Car cart dog= Matches only cat|
+| `^` |position|Only at start of string| /^[cC]/-->cat Car cart dog= Matches only cat|
 | `$` |position|only at end of string |/cat$/--> Matches 'copycat' not 'category'|
 |^ and $ |combined|Match exact word|/^hello$/--> Matcches 'hello' not 'hello world'|
 | `\b` |word boundary `edge` |Match any word that begin with what follows|/\b[cC]/--> Match anyword begin with C c anywhere in string|
