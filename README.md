@@ -273,7 +273,7 @@ const regex = /outDoorCamp/;
 
 ### **A. `test()`** to check string
 -Does this **STRING MATCH THE REGEX** or pattern.
-- Returns **true/false**.
+- Returns **true on first match or false**. Not how many matches.
 
 ```js
 regex.methodname(string)
