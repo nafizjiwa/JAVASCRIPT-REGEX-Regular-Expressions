@@ -93,7 +93,8 @@ They are **tokens**, **quantifiers**, or **character classes**.
 | `{n}` | Match exactly n occurrences |
 | `{n,}` | Match n or more occurrences |
 | `{n,m}` | Match between n and m occurrences |
-
+|`/^#{1.3}$/`|Match a string that contains only 1 - 3 # characters|
+|`/^#{1.3}$/`|Means same|
 ---
 ## **5. Grouping & Alternation (these do NOT match characters by themselves)**
 
@@ -179,53 +180,20 @@ str.replace(regex, "outDoorCamp");
 
 Inside a regex, square brackets `[...]` define a **character class**.
 
-A character class means:
-
-> “Match **one** character from this set.”
+> “Match choose **one** character from this set.”
 
 So:
 
 ```
-/[###]/
+/[###]/ equal to /[#]/ or /#/
 ```
-
-is simply a character class containing **three literal `#` characters**.
-
-But since all three are the same, this is equivalent to:
-
-```
-/[#]/
-```
-
-or even just:
-
-```
-/#/
-```
-
-### ✔️ What it matches
-- `"#"` (a single hash character)
-
-### ❌ What it does NOT match
-- `"##"` (two hashes)
-- `"###"` (three hashes)
-- any other character
-
----
-
-# 🔍 Why `[###]` doesn’t mean “three hashes”
-A character class **never** means “repeat this character.”  
-It means “choose one character from this list.”
-
-So `[###]` is the same as `[ # ]` repeated — but still only matches **one** `#`.
-
----
+# 🔍 `[###]` means “choose one character from this list.”
 
 # 🧠 Summary
 
 | Pattern | Meaning |
 |--------|---------|
-| `[###]` | match **one** `#` |
+| `[###]` | match **one** of these characters `#` |
 | `###` | match the literal string `"###"` |
 | `#{3}` | match exactly **three** `#` characters |
 
