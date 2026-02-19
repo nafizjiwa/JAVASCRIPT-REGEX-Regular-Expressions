@@ -283,16 +283,17 @@ regex.methodname(string)
 ```
 ### **a. `some()`** to check array
 - Belongs to Array not RegExp
-- Does at least one element in array satisfy a condition
+- Does at least 1 element in array satisfy a condition
 
 - ```js
 ["a", " ", "b"].some(char => char === " ")
-// true
+// true at least 1 element satisfies condition of space
 ```
 
 ### **B. `exec()`**
 - Searches for pattern within a string.
 - It returns an array with details,
+
 
 ### **C. `match()`**
 - Searches for 1st occurance of pattern in String
