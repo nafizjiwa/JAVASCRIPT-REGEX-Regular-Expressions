@@ -285,7 +285,7 @@ regex.methodname(string)
 - Belongs to Array not RegExp
 - Does at least 1 element in array satisfy a condition
 
-- ```js
+```js
 ["a", " ", "b"].some(char => char === " ")
 // true at least 1 element satisfies condition of space
 ```
