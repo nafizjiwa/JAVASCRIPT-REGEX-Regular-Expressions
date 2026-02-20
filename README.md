@@ -35,7 +35,7 @@
 |`(?:^|\s)`|Example | Matches a space or the start/beginning of the string|
 |`(?:$|\s)`|Example | Matches a space or the end of the string|
 |/^\s*$/|Blank Input|Is the entire input blank or only whitespace|
-||^ |position, sstart matching at start of Input|
+||^ |position, start matching at start of Input|
 ||\s* | zero or more whitespace characters|
 ||$ |postion stop matching at end of Input|
 
