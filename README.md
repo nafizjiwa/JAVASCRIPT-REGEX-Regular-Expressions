@@ -21,7 +21,7 @@
 | /[abc]{3}/ | Character Class |match exactly 3 characters from the set |
 |/[abc]+/| Character Class|Match one or more characters, each of which must be a, b, or c.|
 |/[abc]*/| Character Class|Match zero or more characters, each of which must be a,b,c even ''|
-|[^...]|Negated Character Class|the ^ inside brackets means “not” without bracket different meaning|
+|[^...]|Negated Character Class| ^ inside brackets means “not” (no brackets different meaning)|
 | `[^abc]` | Negated Character Class| Match ONE character that is NOT a, b, or c or NOT in list|
 | `[a-z]` | **Literal Pattern**| Match ONE lowercase letter a–z |
 | `[A-Z]` | **Literal Pattern**| Match ONE uppercase letter A–Z |
@@ -39,7 +39,8 @@
 ||\s* | zero or more whitespace characters|
 ||$ |postion stop matching at end of Input|
 
-Examples:
+--
+##### Examples:
 const helpRegex = /please help|assist me/i;</br>
 const dollarRegex = /[0-9]+\s*(?:hundred|thousand|million|billion)?\s+dollars/i;</br>
 const freeRegex = /(?:^|\s)fr[e3][e3] m[o0]n[e3]y(?:$|\s)/i;</br>
@@ -48,7 +49,7 @@ const dearRegex = /dear friend/i;</br>
 
 ---
 ## **2. Regex Flags (Modifiers)**  
-FLAGS appear *after* the closing/final slash: `/pattern/flags`
+FLAGS appear *after* the closing/final slash: `/pattern/FLAGSHERE`
 
 | Flag | Name | Meaning |
 |------|------|---------|
@@ -61,8 +62,7 @@ FLAGS appear *after* the closing/final slash: `/pattern/flags`
 | `d` | **Indices** | Return start/end indices of matches |
 | `v` | **Extended Unicode** | Advanced Unicode class(newJS) |
 ---
-# **🔥 Important Clarification**
-These are **not flags**:
+# **🔥* not flags**: **tokens**, **quantifiers (+)**, or **character classes([])**
 
 - `.`
 - `\w`
@@ -70,8 +70,6 @@ These are **not flags**:
 - `*`
 - `?`
 - `[abc]`
-
-They are **tokens**, **quantifiers**, or **character classes**.
 
 ## **3. Anchors (these DO NOT match characters — they match positions)**
 - 'word character' (\w ) - a-z, A-Z, 0-9, _ ;
@@ -107,6 +105,9 @@ They are **tokens**, **quantifiers**, or **character classes**.
 | `(?:abc)` | Non‑capturing group |
 | `a\|b` | Match a OR b |
 | `(a\|b\|c)` | Match one of a, b, or c |
+|/[^a-z]/gi| Match groups of character|
+||[^a-z] anything not a letter|
+|| gi all matches any case|
 
 ---
 ## **6. Escaped Literals (these MATCH literal characters)**
@@ -872,7 +873,7 @@ When you run:
 
 ### **Using Captured Groups in `replace()`**
 - You can reuse captured text in a replacement string.
-- $ is used in replace() for backreference with # of the captured group
+- In replace() $ is for backreference to capture group
 - `$1`, `$2`, etc. refer to the 1st, 2nd, etc. capture group.
 - Example:  
   `"outdoooorcamp".replace(/our(do+or)camp)/, "paid$1world")`  
