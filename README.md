@@ -2,8 +2,8 @@
 # **🔥Summary **REGEX ONE‑PAGE REGEX TOKENS AND FLAGS CHEAT SHEET**
 
 ## **1. Character Classes (these MATCH characters)**
-- Tokens appear *inside* the pattern and control matching behavior.
-- character class is defined by [...];
+- Appears *inside* pattern /pattern/.
+- A set of characters that match a single position.
 
 | Token | Name | Meaning |
 |-------|--------|---------|
@@ -12,9 +12,10 @@
 | `\W` | Match ANY character NOT a word character |space, punc, sym, emoj...|
 | `\d` | Digit Character Class| Match any ONE digit (0–9) |
 | `\D` | Digit Character Class| Match any ONE character that is NOT a digit |
-| `\s` | Whitespace Character Class | Match any ONE whitespace character space, tab, newline 
-| `\S` | Whitespace Character Class |Match any ONE character that is NOT whitespace |
-|[...]| Character Class | Means Match exactly 1 Character between the brackets|
+| `\s` | Whitespace Character Class | Match any ONE of whitespace characters space, tab, newline 
+| `\S` | Whitespace Character Class |Match any ONE character from a set that is NOT whitespace |
+|'\t'|Escape Sequence not a character class| Matches a tab character.|
+|[...]| brackets define a Character Class | Math exactly 1 Character between the brackets|
 | `[abc]` | Character Class| Match ONE of: a, b, or c or of listed|
 | /[abc]{3}/ | Character Class |match exactly 3 characters from the set |
 |/[abc]+/| Character Class|Match one or more characters, each of which must be a, b, or c.|
@@ -331,17 +332,29 @@ ETC...
 ```
 
 ### **D. `replace()`**
-- Replaces matched text with new text.
-- To replace all occurances use global flag (g)
+- returns a new string where only the matched part is changed.
+- fixes one thing and hands the result back
+- can chain more than one to fixe more than one thing
+- it fixes one small thing, then passes the result to the next fix
+- global flag (g) allows for all occurences replaces
 
 ```js
 string.methodname(regex)
-"freecodecamp is cool"
-  .replace(/freecodecamp/, "freeCodeCamp");
-// "freeCodeCamp is cool"
+"outdoors is cool"
+  .replace(/outdoors/, "outDoors");
+// "outDoors is cool"
+
+let text = "Hello\tWorld";
+text = text.replace("\t", " ");
+//"Hello World"
+
+--chain--
+let result = "Hello\tWorld\nTest"
+  .replace("\t", " ")   // fix tabs --> "Hello World\nTest"
+  .replace("\n", " ");  // fix newlines --> "Hello World Test"
 ```
 ### **D.a `replaceAll()`**
-- Replaces all occurrences of a pattern with a string.
+- Replaces all occurrences of a pattern similar to (g).
 
 ```js
 let str = "apple,banana,apple,grape";
