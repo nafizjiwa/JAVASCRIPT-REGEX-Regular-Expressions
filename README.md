@@ -180,18 +180,18 @@ str.replace(regex, "outDoorCamp");
 
 ---
 
-# ✅ **Meaning of `/[###]/`**
+# Example
+## ✅ **Meaning of `/[###]/`**
 
-Inside a regex, square brackets `[...]` define a **character class**.
+In regex, square brackets `[...]` define a **character class**.
 
-> “Match choose **one** character from this set.”
+# 🔍 “Match **one** character from this set.”
 
 So:
 
 ```
-/[###]/ equal to /[#]/ or /#/
+/[###]/ equal to /[#]/ or /#/ --> “choose one character from this list.”
 ```
-# 🔍 `[###]` means “choose one character from this list.”
 
 # 🧠 Summary
 
@@ -200,6 +200,24 @@ So:
 | `[###]` | match **one** of these characters `#` |
 | `###` | match the literal string `"###"` |
 | `#{3}` | match exactly **three** `#` characters |
+
+Absolutely — here is the expanded **master regex table** with all the patterns you asked for, clean, organized, and beginner‑friendly.  
+This will become your go‑to cheat sheet.
+
+---
+
+# ⭐ Table of Regex Examples 
+- A single character can be considered a group with +
+
+| **Regex** | **Meaning (Plain English)** | **Example Input** | **Example Output** |
+|-----------|-----------------------------|-------------------|---------------------|
+| `/\s/g` | Match **Each whitespace one at a time not as groups** (space, tab, newline) | `"Hello   World"` | `"Hello___World"` |
+| `/\s+/g` | Match **whole groups of one or more whitespace characters** | `"Hello   World"` | `"Hello_World"` |
+| `/ +/g` | Match **groups of one or more literal spaces** (only spaces) | `"Hello   World"` | `"Hello_World"` |
+| `/[?!\.]/g` | Match **any one character** inside the brackets: `?`, `!`, `.` | `"Hello?!..."` | `"Hello"` |
+| `/\b\w+/g` | Match **each word** (`\b` = boundary, `\w+` = letters/digits/underscore) | `"hello world"` | `"HELLO WORLD"` (after `.toUpperCase()`) |
+| `/[^a-z ]/gi` | Match **anything NOT a letter or space** (`^` = NOT) | `"Name:   NAFIZ!!!"` | `"Name   NAFIZ"` |
+---
 
 
 
