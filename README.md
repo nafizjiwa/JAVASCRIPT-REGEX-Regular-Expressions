@@ -3,7 +3,8 @@
 
 ## **1. Character Classes (these MATCH characters)**
 - Appears *inside* pattern /pattern/.
-- A set of characters that match a single position.
+- A character class is set of characters that match a single position.
+- Character set is either [...] or \s
 
 | Token | Name | Meaning |
 |-------|--------|---------|
