@@ -1,5 +1,4 @@
-# 
-# **🔥Summary **REGEX ONE‑PAGE REGEX TOKENS AND FLAGS CHEAT SHEET**
+# **🔥Summary **REGEX TOKENS AND FLAGS**
 
 ## **1. Character Classes (these MATCH characters)**
 - Appears *inside* pattern /pattern/.
