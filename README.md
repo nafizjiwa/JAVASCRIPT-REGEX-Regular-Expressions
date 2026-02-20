@@ -47,7 +47,7 @@ const stockRegex = /(?:^|\s)[s5][t7][o0][c{[(]k [a@4]l[e3]r[t7](?:$|\s)/i;</br>
 const dearRegex = /dear friend/i;</br>
 
 ---
-## **2. Regex Flags (Modifiers)**  
+## **2. Flags (Modifiers)**  
 FLAGS appear *after* the closing/final slash: `/pattern/FLAGSHERE`
 
 | Flag | Name | Meaning |
@@ -61,7 +61,7 @@ FLAGS appear *after* the closing/final slash: `/pattern/FLAGSHERE`
 | `d` | **Indices** | Return start/end indices of matches |
 | `v` | **Extended Unicode** | Advanced Unicode class(newJS) |
 ---
-## **3. Anchors (these DO NOT match characters — they match positions)**
+## **3. Anchors ( MATCH positions NOT CHARACTERS)**
 - 'word character' (\w ) - a-z, A-Z, 0-9, _ ;
 - 'Non-word character' (space, punct, symbols)
 
@@ -74,7 +74,7 @@ FLAGS appear *after* the closing/final slash: `/pattern/FLAGSHERE`
 | `\B` | not a word‑boundary `inside`|Match anywhere in the middle|/\Bcat/--> Matches 'cat' in education|
 
 ---
-## **4. Quantifiers (these modify how many characters to match)**
+## **4. Quantifiers (modify NUMBER of characters to match)**
 
 | Token |Name | Meaning |
 |-------|---------|----------|
