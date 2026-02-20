@@ -16,7 +16,7 @@
 | `\s` | Whitespace Character Class | Match any ONE of whitespace characters space, tab, newline 
 | `\S` | Whitespace Character Class |Match any ONE character from a set that is NOT whitespace |
 |'\t'|Escape Sequence not a character class| Matches a tab character.|
-|[...]| brackets define a Character Class | Math exactly 1 Character between the brackets|
+|[...]| brackets define a Character Class | Match exactly 1 Character between the brackets|
 | `[abc]` | Character Class| Match ONE of: a, b, or c or of listed|
 | /[abc]{3}/ | Character Class |match exactly 3 characters from the set |
 |/[abc]+/| Character Class|Match one or more characters, each of which must be a, b, or c.|
