@@ -61,15 +61,6 @@ FLAGS appear *after* the closing/final slash: `/pattern/FLAGSHERE`
 | `d` | **Indices** | Return start/end indices of matches |
 | `v` | **Extended Unicode** | Advanced Unicode class(newJS) |
 ---
-# **🔥* not flags**: **tokens**, **quantifiers (+)**, or **character classes([])**
-
-- `.`
-- `\w`
-- `+`
-- `*`
-- `?`
-- `[abc]`
-
 ## **3. Anchors (these DO NOT match characters — they match positions)**
 - 'word character' (\w ) - a-z, A-Z, 0-9, _ ;
 - 'Non-word character' (space, punct, symbols)
