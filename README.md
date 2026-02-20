@@ -21,6 +21,7 @@
 | /[abc]{3}/ | Character Class |match exactly 3 characters from the set |
 |/[abc]+/| Character Class|Match one or more characters, each of which must be a, b, or c.|
 |/[abc]*/| Character Class|Match zero or more characters, each of which must be a,b,c even ''|
+|[^...]|Negated Character Class|the ^ inside brackets means “not” without bracket different meaning|
 | `[^abc]` | Negated Character Class| Match ONE character that is NOT a, b, or c or NOT in list|
 | `[a-z]` | **Literal Pattern**| Match ONE lowercase letter a–z |
 | `[A-Z]` | **Literal Pattern**| Match ONE uppercase letter A–Z |
@@ -34,7 +35,7 @@
 |`(?:^|\s)`|Example | Matches a space or the start/beginning of the string|
 |`(?:$|\s)`|Example | Matches a space or the end of the string|
 |/^\s*$/|Blank Input|Is the entire input blank or only whitespace|
-||^ |position, matching at start of Inputnot inside [..]|
+||^ |position, sstart matching at start of Input|
 ||\s* | zero or more whitespace characters|
 ||$ |postion stop matching at end of Input|
 
