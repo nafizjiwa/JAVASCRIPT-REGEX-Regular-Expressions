@@ -61,6 +61,18 @@ FLAGS appear *after* the closing/final slash: `/pattern/FLAGSHERE`
 | `d` | **Indices** | Return start/end indices of matches |
 | `v` | **Extended Unicode** | Advanced Unicode class(newJS) |
 ---
+
+|Category|	Key Concepts|	Code Example|
+|-------|--------|-----------|
+|Creation|	Literal vs. Constructor	|const re = /abc/; or new RegExp("abc");|
+|RegExp Methods|	.test(), .exec()	|/hi/.test("hi there"); // returns true|
+|String Methods|	.match(), .replace()	|"apple".replace(/p/g, "b"); // "abble"|
+|Flags|	i (Case), g (Global)	|"Hello".match(/h/gi); // ["H"]|
+|Anchors|	^ (Start), $ (End)	|/^A/.test("Apple"); // true (starts with A)|
+|Quantifiers|	+ (1+), * (0+)	|/lo+/.exec("hellooo"); // matches "looo"|
+|Classes|	\d (Digit), \w (Word)	|/\d+/.test("Age 25"); // true|
+|Logic|	`	|(OR),()` (Group)|
+
 ## **3. Anchors ( MATCH positions NOT CHARACTERS)**
 - 'word character' (\w ) - a-z, A-Z, 0-9, _ ;
 - 'Non-word character' (space, punct, symbols)
@@ -191,10 +203,18 @@ So:
 | `###` | match the literal string `"###"` |
 | `#{3}` | match exactly **three** `#` characters |
 
-Absolutely — here is the expanded **master regex table** with all the patterns you asked for, clean, organized, and beginner‑friendly.  
-This will become your go‑to cheat sheet.
-
 ---
+
+|Category|	Key Concepts|	Code Example|
+|-------|--------|-----------|
+|Creation|	Literal vs. Constructor	|const re = /abc/; or new RegExp("abc");|
+|RegExp Methods|	.test(), .exec()	|/hi/.test("hi there"); // returns true|
+|String Methods|	.match(), .replace()	|"apple".replace(/p/g, "b"); // "abble"|
+|Flags|	i (Case), g (Global)	|"Hello".match(/h/gi); // ["H"]|
+|Anchors|	^ (Start), $ (End)	|/^A/.test("Apple"); // true (starts with A)|
+|Quantifiers|	+ (1+), * (0+)	|/lo+/.exec("hellooo"); // matches "looo"|
+|Classes|	\d (Digit), \w (Word)	|/\d+/.test("Age 25"); // true|
+|Logic|	`	|(OR),()` (Group)|
 
 # ⭐ Table of Regex Examples 
 - A single character can be considered a group with +
